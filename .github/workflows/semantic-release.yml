@@ -27,7 +27,7 @@ jobs:
 
     - name: Print Changed Files
       run: |
-        echo "GitHub Token: ${{ secrets.GITHUB_TOKEN }}"
+        echo "GitHub Token: ${{ secrets.PAT_GITHUB2 }}"
         git fetch --depth=1 origin +refs/tags/*:refs/tags/*
         git diff --name-only HEAD FETCH_HEAD
 
