@@ -40,8 +40,7 @@ jobs:
     - name: Print Changed Files
       run: |
         npx lerna init --independent
-        npx lerna changed --json
-        npx lerna diff 
+        
 
 
     - name: "Version and publish" 
