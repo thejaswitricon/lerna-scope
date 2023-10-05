@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/thejaswitricon/lerna-scope/compare/@lerna/lerna-scope@0.1.0...@lerna/lerna-scope@0.2.0) (2023-10-05)
+
+
+### Features
+
+* initial ([e4b155a](https://github.com/thejaswitricon/lerna-scope/commit/e4b155ac2f90aaf723db30ceea5f240ec77b39b7))
+* initial ([6bd584c](https://github.com/thejaswitricon/lerna-scope/commit/6bd584c1851853ad2800baa87cbd8e401bddadd7))
+
+
+
+
+
 # 0.1.0 (2023-10-05)
 
 
