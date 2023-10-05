@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
+  "packages": [
+    "./*"
+  ],
+  "command": {
+    "create": {
+      "homepage": "https://github.com/thejaswitricon/lerna-scope.git",
+      "license": "MIT"
+    },
+    "publish": {
+      "tempTag": true
+    },
+    "version": {
+      "conventionalCommits": true,
+      "createRelease": "github",
+      "exact": true,
+      "message": "chore(release): %s"
+    }
+  },
+  "npmClient": "npm",
+  "version": "independent"
+}
