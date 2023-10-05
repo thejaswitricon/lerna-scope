@@ -1,8 +1,9 @@
 {
-  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "packages": [
-    "./*"
+    ".",
+    "packages/*"
   ],
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "command": {
     "create": {
       "homepage": "https://github.com/thejaswitricon/lerna-scope.git",
