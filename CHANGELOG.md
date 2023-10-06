@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.5](https://github.com/thejaswitricon/lerna-scope/compare/@lerna/lerna-scope@0.2.4...@lerna/lerna-scope@0.2.5) (2023-10-06)
+
+
+### Bug Fixes
+
+* **root:** add st-scope.js ([c08d99f](https://github.com/thejaswitricon/lerna-scope/commit/c08d99f8a2ee0abb3fea83e2b1f05f254c32066a))
+
+
+
+
+
 ## [0.2.4](https://github.com/thejaswitricon/lerna-scope/compare/@lerna/lerna-scope@0.2.3...@lerna/lerna-scope@0.2.4) (2023-10-06)
 
 
