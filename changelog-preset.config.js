@@ -9,24 +9,22 @@ module.exports = {
       // Group commits by commit type (e.g., feat, fix, chore)
       commits.forEach((commit) => {
         const commitType = commit.type || 'Other';
-        let commitScope = commit.scope || 'Other'; // Default to 'Other' if no scope provided
+        let commitScope = commit.scope; // Use provided scope if available
   
-        // If scope is 'Other', try to extract scope from the commit message or file path
-        if (commitScope === 'Other') {
-          // Extract scope from the commit message
-          const scopeMatch = commit.message.match(/\(([^)]+)\)/);
-          if (scopeMatch) {
-            commitScope = scopeMatch[1];
+        // If no explicit scope is provided, try to extract scope from the file path
+        if (!commitScope) {
+          const filePath = commit.files && commit.files[0];
+          if (filePath) {
+            // Extract the directory name from the file path
+            const scopeMatch = filePath.match(/\/([^/]+)\//);
+            if (scopeMatch) {
+              commitScope = scopeMatch[1];
+            }
           }
-          // Alternatively, you can extract scope from the file path if available
-          // const filePath = commit.files && commit.files[0];
-          // if (filePath) {
-          //   const scopeMatch = filePath.match(/\/([^/]+)\//);
-          //   if (scopeMatch) {
-          //     commitScope = scopeMatch[1];
-          //   }
-          // }
         }
+  
+        // Default to 'Other' if scope is still not available
+        commitScope = commitScope || 'Other';
   
         // Determine the commit group based on the commit type
         const commitGroup = commitType === 'feat' ? 'Features' : 'Bug Fixes';
@@ -48,5 +46,4 @@ module.exports = {
       return changelogEntry + sections.join('\n') + '\n';
     },
   };
-  
   
