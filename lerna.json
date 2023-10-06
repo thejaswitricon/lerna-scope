@@ -20,6 +20,7 @@
       "message": "chore(release): %s"
     }
   },
+  "changelogPreset": "./changelog-preset.config.js",
   "npmClient": "npm",
   "version": "independent"
 }
