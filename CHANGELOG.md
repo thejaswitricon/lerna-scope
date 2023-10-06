@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.2.9 (2023-10-06)</small>
+
+* fix: sample fix index.js ([862eccf](https://github.com/thejaswitricon/lerna-scope/commit/862eccf))
+* fix: sample fix index.js ([8709741](https://github.com/thejaswitricon/lerna-scope/commit/8709741))
+* chore(release): %s ([70ef894](https://github.com/thejaswitricon/lerna-scope/commit/70ef894))
+
+
+
+
+
 ## <small>0.2.8 (2023-10-06)</small>
 
 * fix: sample fix index.js ([8709741](https://github.com/thejaswitricon/lerna-scope/commit/8709741))
