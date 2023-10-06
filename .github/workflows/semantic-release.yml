@@ -49,6 +49,7 @@ jobs:
         git add lerna.json
         git commit -m "chore: Committing changes in lerna.json"
         git checkout -- package-lock.json
+      continue-on-error: true
 
     - name: Print Changed Files
       run: |
