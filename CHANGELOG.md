@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.2.7 (2023-10-06)</small>
+
+* fix: sample fix index.js ([a71e80c](https://github.com/thejaswitricon/lerna-scope/commit/a71e80c))
+* fix: sample fix index.js ([71255ad](https://github.com/thejaswitricon/lerna-scope/commit/71255ad))
+* fix: sample fix index.js ([2875a42](https://github.com/thejaswitricon/lerna-scope/commit/2875a42))
+* fix: sample fix index.js ([8450035](https://github.com/thejaswitricon/lerna-scope/commit/8450035))
+* fix: sample fix index.js ([3d1dca4](https://github.com/thejaswitricon/lerna-scope/commit/3d1dca4))
+* fix: sample fix index.js ([630cbdf](https://github.com/thejaswitricon/lerna-scope/commit/630cbdf))
+* fix: sample fix index.js ([cd1656c](https://github.com/thejaswitricon/lerna-scope/commit/cd1656c))
+* fix: sample fix index.js ([c569b09](https://github.com/thejaswitricon/lerna-scope/commit/c569b09))
+* fix: sample fix index.js ([c908e6e](https://github.com/thejaswitricon/lerna-scope/commit/c908e6e))
+* fix: sample fix index.js ([e2e890b](https://github.com/thejaswitricon/lerna-scope/commit/e2e890b))
+* fix: sample fix index.js ([669729b](https://github.com/thejaswitricon/lerna-scope/commit/669729b))
+* chore(release): %s ([787c1b8](https://github.com/thejaswitricon/lerna-scope/commit/787c1b8))
+
+
+
+
+
 # [](https://github.com/thejaswitricon/lerna-scope/compare/@lerna/lerna-scope@0.2.6...@lerna/lerna-scope@) (2023-10-06)
 
 
