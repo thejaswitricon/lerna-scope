@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.16](https://github.com/thejaswitricon/lerna-scope/compare/@lerna/lerna-scope@0.2.15...@lerna/lerna-scope@0.2.16) (2023-10-06)
+
+
+### Bug Fixes
+
+* sample fix index.js ([d7cca1e](https://github.com/thejaswitricon/lerna-scope/commit/d7cca1e0ebae0f91cfb94aecacfd104cf8d665bf))
+* sample fix index.js ([ec3c043](https://github.com/thejaswitricon/lerna-scope/commit/ec3c043b6f054c1c79b1ac54280ff5975117ef72))
+* sample fix index.js ([88a282f](https://github.com/thejaswitricon/lerna-scope/commit/88a282f8f2f3c58b927e09a6ae567970b10bd8aa))
+
+
+
+
+
 ## [0.2.15](https://github.com/thejaswitricon/lerna-scope/compare/@lerna/lerna-scope@0.2.14...@lerna/lerna-scope@0.2.15) (2023-10-06)
 
 
