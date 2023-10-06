@@ -1,6 +1,6 @@
 {
   "name": "@lerna/lerna-scope",
-  "version": null,
+  "version": 0.0.0,
   "description": "",
   "main": "index.js",
   "private": true,
