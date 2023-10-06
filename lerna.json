@@ -1,7 +1,8 @@
 {
   "packages": [
     ".",
-    "packages/*"
+    "modules/ami/*",
+    "modules/vpc/*"
   ],
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "command": {
