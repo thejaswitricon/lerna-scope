@@ -31,6 +31,16 @@ jobs:
         git diff --name-only HEAD FETCH_HEAD
       continue-on-error: true
 
+    - name: Get Changed Files
+      id: changed-files
+      run: |
+        # Get the list of changed files and store it as a space-separated string
+        CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+        echo "::set-output name=changedFiles::$CHANGED_FILES"
+
+    - name: Set Scope for Lerna Versioning
+      run: node set-scope.js ${{ steps.changed-files.outputs.changedFiles }}
+
     - name: Commit changes
       run: |
         git config user.name "${{ github.actor }}"
