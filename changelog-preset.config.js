@@ -9,7 +9,7 @@ module.exports = {
       // Group commits by commit type (e.g., feat, fix, chore)
       commits.forEach((commit) => {
         const commitType = commit.type || 'Other';
-        const packageName = commit.scope || 'package-1';
+        const packageName = commit.scope || 'Other'; // Default to 'Other' if no scope provided
   
         // Determine the commit group based on the commit type
         const commitGroup = commitType === 'feat' ? 'Features' : 'Bug Fixes';
