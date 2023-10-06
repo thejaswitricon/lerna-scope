@@ -54,7 +54,6 @@ jobs:
     - name: Print Changed Files
       run: |
         npx lerna init --independent
-        npx -c 'lerna watch -- echo \$LERNA_PACKAGE_NAME \$LERNA_FILE_CHANGES'
         
     - name: "Version and publish" 
       env:
