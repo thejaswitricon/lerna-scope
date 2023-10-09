@@ -1,46 +1,79 @@
-const fs = require('fs');
-const path = require('path');
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
 
-module.exports = {
-  // Function to generate a custom changelog entry for a package version
-  generateEntry: ({ version, tag, commits }) => {
-    const commitGroups = {
-      'Bug Fixes': [],
-      'Features': [],
-    };
+async function getChangedDirectory() {
+  try {
+    // Use 'git status --porcelain' to get a list of changed files and their statuses
+    const { stdout } = await exec('git status --porcelain');
 
-    // Helper function to get the package or directory name from the file path
-    function getPackageOrDirectoryName(filePath) {
-      // Extract the directory name from the file path
-      const parts = filePath.split('/');
-      const lastPart = parts[parts.length - 2]; // Assumes package names are the parent directory
-      return lastPart || 'Other'; // Default to 'Other' if no scope is available
+    // Split the output into lines
+    const lines = stdout.split('\n');
+
+    // Extract the directory names from the list of changed files
+    const changedDirectories = new Set();
+
+    for (const line of lines) {
+      if (line.trim() !== '') {
+        // Extract the file path from the line (skip the status characters)
+        const filePath = line.trim().substring(3).trim();
+
+        // Extract the directory name from the file path
+        const directoryName = filePath.split('/')[0];
+
+        // Add the directory name to the set of changed directories
+        changedDirectories.add(directoryName);
+      }
     }
 
-    // Group commits by commit type (e.g., feat, fix, chore)
-    commits.forEach((commit) => {
-      const commitType = commit.type || 'Other';
-      const commitScope = commit.scope || getPackageOrDirectoryName(commit.files && commit.files[0]);
+    // Convert the set of directory names to an array (if needed)
+    const changedDirectoryArray = Array.from(changedDirectories);
 
-      // Determine the commit group based on the commit type
-      const commitGroup = commitType === 'feat' ? 'Features' : 'Bug Fixes';
+    // You can return the array of changed directory names or do further processing
+    return changedDirectoryArray;
+  } catch (error) {
+    console.error('Error:', error);
+    return [];
+  }
+}
 
-      // Add each commit message with the package name and committer's name
-      commitGroups[commitGroup].push(
-        `${commitScope}: ${commit.message} (#${commit.hash.slice(0, 7)}) - ${commit.committer.name}`
-      );
+module.exports = config({
+  "issuePrefixes": ["TEST-"],
+  "issueUrlFormat": "myBugTracker.com/{prefix}{id}",
+}).then((preset) => {
+  preset.conventionalChangelog.writerOpts.commitPartial = commitPartial;
+
+  // Call the function to get the changed directory names
+  getChangedDirectory()
+    .then((changedDirectories) => {
+      console.log('Changed Directories:', changedDirectories);
+
+      // Add the changed directories to the release notes
+      preset.conventionalChangelog.writerOpts.finalizeContext = async function (
+        context
+      ) {
+        const releaseNotes = context.commitGroups.map((group) => {
+          const title = group.title;
+          const commits = group.commits.map((commit) => {
+            return `- ${commit.hash} ${commit.subject}`;
+          });
+
+          return [title, ...commits].join('\n');
+        });
+
+        // Append the changed directories to the release notes
+        if (changedDirectories.length > 0) {
+          releaseNotes.push('\nChanged Directories:');
+          changedDirectories.forEach((directory) => {
+            releaseNotes.push(`- ${directory}`);
+          });
+        }
+
+        context.finalizeContext.notes = releaseNotes.join('\n');
+      };
+    })
+    .catch((error) => {
+      console.error('Error:', error);
     });
 
-    // Construct the changelog entry
-    const changelogEntry = `## [${version}](${tag})\n`;
-
-    // Add sections for "Bug Fixes" and "Features" if there are commits in them
-    const sections = Object.keys(commitGroups)
-      .filter((commitGroup) => commitGroups[commitGroup].length > 0)
-      .map((commitGroup) => {
-        return `### ${commitGroup}\n${commitGroups[commitGroup].join('\n')}`;
-      });
-
-    return changelogEntry + sections.join('\n') + '\n';
-  },
-};
+  return preset;
+});
