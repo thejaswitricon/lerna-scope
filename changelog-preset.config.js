@@ -25,8 +25,10 @@ module.exports = {
       // Determine the commit group based on the commit type
       const commitGroup = commitType === 'feat' ? 'Features' : 'Bug Fixes';
 
-      // Add each commit message with the package name
-      commitGroups[commitGroup].push(`${commitScope}: ${commit.message} (#${commit.hash.slice(0, 7)})`);
+      // Add each commit message with the package name and committer's name
+      commitGroups[commitGroup].push(
+        `${commitScope}: ${commit.message} (#${commit.hash.slice(0, 7)}) - ${commit.committer.name}`
+      );
     });
 
     // Construct the changelog entry
