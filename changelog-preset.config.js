@@ -12,11 +12,9 @@ module.exports = {
     // Helper function to get the package or directory name from the file path
     function getPackageOrDirectoryName(filePath) {
       // Extract the directory name from the file path
-      const directoryMatch = filePath.match(/\/([^/]+)\//);
-      if (directoryMatch) {
-        return directoryMatch[1];
-      }
-      return 'Other'; // Default to 'Other' if no scope is available
+      const parts = filePath.split('/');
+      const lastPart = parts[parts.length - 2]; // Assumes package names are the parent directory
+      return lastPart || 'Other'; // Default to 'Other' if no scope is available
     }
 
     // Group commits by commit type (e.g., feat, fix, chore)
