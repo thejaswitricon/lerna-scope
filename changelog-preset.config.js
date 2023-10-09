@@ -1,6 +1,43 @@
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
+// Define the commitPartial variable here or import it if needed.
+const commitPartial = `
+*{{#if scope}} **{{scope}}:**
+{{~/if}} {{#if subject}}
+  {{~subject}}
+{{~else}}
+  {{~header}}
+{{~/if}}
+
+{{~!-- commit link --}}{{~#if hash}} {{#if @root.linkReferences~}}
+  ([{{shortHash}}]({{commitUrlFormat}}))
+{{~else}}
+  {{~shortHash}}
+{{~/if}}{{~/if}}
+
+{{~!-- commit references --}}
+{{~#if references~}}
+  , closes
+  {{~#each references}} {{#if @root.linkReferences~}}
+    [
+    {{~#if this.owner}}
+      {{~this.owner}}/
+    {{~/if}}
+    {{~this.repository}}{{this.prefix}}{{this.issue}}]({{issueUrlFormat}})
+  {{~else}}
+    {{~#if this.owner}}
+      {{~this.owner}}/
+    {{~/if}}
+    {{~this.repository}}{{this.prefix}}{{this.issue}}
+  {{~/if}}{{/each}}
+{{~/if}}
+{{#if body}}
+  <br/>
+  {{body}} // The addition
+{{~/if}}
+`;
+
 async function getChangedDirectory() {
   try {
     // Use 'git status --porcelain' to get a list of changed files and their statuses
@@ -40,6 +77,7 @@ module.exports = config({
   "issuePrefixes": ["TEST-"],
   "issueUrlFormat": "myBugTracker.com/{prefix}{id}",
 }).then((preset) => {
+  // Assign the commitPartial to the preset
   preset.conventionalChangelog.writerOpts.commitPartial = commitPartial;
 
   // Call the function to get the changed directory names
