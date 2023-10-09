@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.2.23 (2023-10-09)</small>
+
+* feat: initial ([5e218df](https://github.com/thejaswitricon/lerna-scope/commit/5e218df))
+
+
+
+
+
 ## <small>0.2.22 (2023-10-09)</small>
 
 * feat: initial ([5e60c67](https://github.com/thejaswitricon/lerna-scope/commit/5e60c67))
