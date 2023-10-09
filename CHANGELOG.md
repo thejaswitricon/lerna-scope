@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.2.19 (2023-10-09)</small>
+
+* feat: initial ([0282aae](https://github.com/thejaswitricon/lerna-scope/commit/0282aae))
+
+
+
+
+
 ## <small>0.2.18 (2023-10-06)</small>
 
 * fix: sample fix index.js ([1a9d213](https://github.com/thejaswitricon/lerna-scope/commit/1a9d213))
