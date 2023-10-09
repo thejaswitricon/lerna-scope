@@ -1,3 +1,39 @@
+const commitPartial = `
+*{{#if scope}} **{{scope}}:**
+{{~/if}} {{#if subject}}
+  {{~subject}}
+{{~else}}
+  {{~header}}
+{{~/if}}
+
+{{~!-- commit link --}}{{~#if hash}} {{#if @root.linkReferences~}}
+  ([{{shortHash}}]({{commitUrlFormat}}))
+{{~else}}
+  {{~shortHash}}
+{{~/if}}{{~/if}}
+
+{{~!-- commit references --}}
+{{~#if references~}}
+  , closes
+  {{~#each references}} {{#if @root.linkReferences~}}
+    [
+    {{~#if this.owner}}
+      {{~this.owner}}/
+    {{~/if}}
+    {{~this.repository}}{{this.prefix}}{{this.issue}}]({{issueUrlFormat}})
+  {{~else}}
+    {{~#if this.owner}}
+      {{~this.owner}}/
+    {{~/if}}
+    {{~this.repository}}{{this.prefix}}{{this.issue}}
+  {{~/if}}{{/each}}
+{{~/if}}
+{{#if body}}
+  <br/>
+  {{body}} // The addition
+{{~/if}}
+`
+
 module.exports = {
   // Function to generate a custom changelog entry for a package version
   generateEntry: ({ version, tag, commits }) => {
@@ -6,7 +42,7 @@ module.exports = {
       'Features': [],
     };
 
-    const changedPackages = new Set();
+    const changedPackageFiles = new Set();
 
     // Group commits by commit type (e.g., feat, fix, chore)
     commits.forEach((commit) => {
@@ -34,14 +70,11 @@ module.exports = {
       // Add each commit message with the package name
       commitGroups[commitGroup].push(`${commitScope}: ${commit.message} (#${commit.hash.slice(0, 7)})`);
 
-      // Track changed package names by looking for changes in package.json files
+      // Track changed package.json files
       if (commit.files) {
         commit.files.forEach((filePath) => {
           if (filePath.endsWith('/package.json')) {
-            const packageName = filePath.match(/([^/]+)\/package.json/);
-            if (packageName) {
-              changedPackages.add(packageName[1]);
-            }
+            changedPackageFiles.add(filePath); // Store the file path
           }
         });
       }
@@ -57,16 +90,11 @@ module.exports = {
         return `### ${commitGroup}\n${commitGroups[commitGroup].join('\n')}`;
       });
 
-    // Add a section for changed package names
-    if (changedPackages.size > 0) {
-      const packageNamesSection = `### Changed Package Names\n${Array.from(changedPackages).join('\n')}`;
-      sections.push(packageNamesSection);
+    // Add a section for changed package.json files
+    if (changedPackageFiles.size > 0) {
+      const packageFilesSection = `### Changed Package Files\n${Array.from(changedPackageFiles).join('\n')}`;
+      sections.push(packageFilesSection);
     }
-
-    // Append the names of the changed package.json files
-    const changedPackageFiles = Array.from(changedPackages).map((packageName) => `${packageName}/package.json`);
-    const changedPackageFilesSection = `### Changed Package Files\n${changedPackageFiles.join('\n')}`;
-    sections.push(changedPackageFilesSection);
 
     return changelogEntry + sections.join('\n') + '\n';
   },
