@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.2.30 (2023-10-11)</small>
+
+
+* initial
+
+ ([]())
+
+
+
+
+
+
+
+
 ## <small>0.2.29 (2023-10-11)</small>
 
 
