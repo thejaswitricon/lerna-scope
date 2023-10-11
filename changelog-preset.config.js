@@ -1,21 +1,41 @@
+const commitPartial = `
+* {{#if scope}}**{{scope}}:** {{/if}}{{subject}}
+
+{{!-- commit link --}}{{#if hash}} {{#if @root.linkReferences~}}
+  ([{{shortHash}}]({{commitUrlFormat}}))
+{{~else}}
+  {{shortHash}}
+{{~/if}}{{~/if}}
+
+{{!-- commit references --}}
+{{#if references~}}
+  , closes
+  {{~#each references}}
+    {{#if @root.linkReferences~}}
+      [{{#if this.owner}}{{this.owner}}/{{/if}}{{this.repository}}{{this.prefix}}{{this.issue}}]({{issueUrlFormat}})
+    {{~else}}
+      {{#if this.owner}}{{this.owner}}/{{/if}}{{this.repository}}{{this.prefix}}{{this.issue}}
+    {{~/if}}
+  {{/each}}
+{{~/if}}
+
+{{#if body}}
+  <br/>
+  {{body}} // The addition
+{{/if}}
+
+{{#if folderNames}}
+  <br/>
+  Changed folders: {{#each folderNames}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
+{{/if}}
+`;
+
 module.exports = {
-  // Define the custom changelog generation function
-  generateCustomChangelog: async (changes, context) => {
-    const { commits } = context;
-    const changelogEntries = [];
-
-    // Iterate through commits and extract the author's name
-    for (const commit of commits) {
-      const authorName = commit.author.name;
-      const commitMessage = commit.subject;
-
-      // Create a changelog entry with the author's name and commit message
-      changelogEntries.push(`- ${authorName}: ${commitMessage}`);
-    }
-
-    // Join the changelog entries with line breaks
-    const changelogContent = changelogEntries.join('\n');
-
-    return changelogContent;
+  issuePrefixes: ["TEST-"],
+  issueUrlFormat: "myBugTracker.com/{prefix}{id}",
+  conventionalChangelog: {
+    writerOpts: {
+      commitPartial,
+    },
   },
 };
