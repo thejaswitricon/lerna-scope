@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.2.32 (2023-10-16)</small>
+
+* fix: initial ([6705a76](https://github.com/thejaswitricon/lerna-scope/commit/6705a76))
+
+
+
+
+
 ## <small>0.2.31 (2023-10-16)</small>
 
 * fix: initial ([30cd5bd](https://github.com/thejaswitricon/lerna-scope/commit/30cd5bd))
