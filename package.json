@@ -6,6 +6,13 @@
   "workspaces": [
     "./*"
   ],
+  "changelog": {
+    "labels": {
+      "Type: Feature": "Feat",
+      "Type: Bug": "Bug fixes",
+      "Type: Enhancement": "Enhancements"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
