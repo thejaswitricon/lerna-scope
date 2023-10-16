@@ -2,7 +2,6 @@
   "name": "@lerna/lerna-scope",
   "version": "0.2.30",
   "description": "",
-  "main": "index.js",
   "private": true,
   "workspaces": [
     "./*"
@@ -21,6 +20,8 @@
   },
   "homepage": "https://github.com/thejaswitricon/lerna-scope#readme",
   "devDependencies": {
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "lerna": "^7.3.0"
   }
 }
