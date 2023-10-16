@@ -17,7 +17,7 @@ module.exports = {
   
     // Customized writer to include directory information in the changelog
     writerOpts: {
-      transform: (commit, context) => {
+      transform: function(commit, context) {
         const directoryInfo = this.getInfoFromCommit(commit);
         return `* ${commit.type}: ${commit.subject}\n${directoryInfo}`;
       },
