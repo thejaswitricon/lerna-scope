@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.2.31 (2023-10-16)</small>
+
+* fix: initial ([30cd5bd](https://github.com/thejaswitricon/lerna-scope/commit/30cd5bd))
+* fix: initial ([5930a07](https://github.com/thejaswitricon/lerna-scope/commit/5930a07))
+* fix: initial ([93b02e3](https://github.com/thejaswitricon/lerna-scope/commit/93b02e3))
+* fix: initial ([7da72ad](https://github.com/thejaswitricon/lerna-scope/commit/7da72ad))
+* fix: initial ([d211d21](https://github.com/thejaswitricon/lerna-scope/commit/d211d21))
+* fix: initial ([bde4c98](https://github.com/thejaswitricon/lerna-scope/commit/bde4c98))
+* fix: initial ([7db2785](https://github.com/thejaswitricon/lerna-scope/commit/7db2785))
+* feat: initial ([3395eec](https://github.com/thejaswitricon/lerna-scope/commit/3395eec))
+* feat: initial ([2d0d442](https://github.com/thejaswitricon/lerna-scope/commit/2d0d442))
+
+
+
+
+
 ## <small>0.2.30 (2023-10-11)</small>
 
 
